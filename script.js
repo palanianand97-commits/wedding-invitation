@@ -1,170 +1,203 @@
 /**
- * ============================================
- * Wedding Invitation - Interactive Script
- * ============================================
- * - Front cover open transition
- * - Countdown timer to wedding date
- * - Scroll fade-in animations
- * - Google Maps location
- * - WhatsApp sharing
- * ============================================
+ * ==========================================================================
+ * அம்சானந் & சரண்யா திருமண அழைப்பிதழ் - Interactive Logic
+ * ==========================================================================
  */
 
 (function () {
     'use strict';
 
-    /* ============================================
-       CONFIGURATION
-       ============================================ */
+    /* ----------------------------------------------------------------------
+       1. CONSTANTS & CONFIGURATION
+       ---------------------------------------------------------------------- */
 
-    // Google Maps URL - exact venue location
+    // Exact Google Maps Venue Link provided by the user
     const GOOGLE_MAPS_URL = 'https://www.google.com/maps/place/9%C2%B043\'58.6%22N+77%C2%B016\'58.6%22E/@9.7329408,77.2829363,817m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d9.7329408!4d77.2829363?entry=ttu';
 
-    // Wedding date & time (Marriage ceremony)
-    const WEDDING_DATE = new Date('2026-09-13T10:30:00+05:30');
+    // Wedding Muhurtham Date & Time: 13 September 2026, 10:30 AM IST
+    const WEDDING_TARGET_DATE = new Date('2026-09-13T10:30:00+05:30');
 
-    // WhatsApp pre-filled message
-    const WHATSAPP_MESSAGE = `💐 அன்புடன் அழைக்கின்றோம்!
+    /* ----------------------------------------------------------------------
+       2. DOM ELEMENTS
+       ---------------------------------------------------------------------- */
+    const frontCoverScreen   = document.getElementById('front-cover');
+    const openInvitationBtn  = document.getElementById('open-invitation-btn');
+    const invitationMain     = document.getElementById('invitation-content');
+    const mapsBtn            = document.getElementById('maps-btn');
+    const whatsappBtn        = document.getElementById('whatsapp-share-btn');
+    const mainInvitationImg  = document.getElementById('main-invitation-img');
+    const lightboxModal      = document.getElementById('image-lightbox');
+    const lightboxImg        = document.getElementById('lightbox-img');
+    const closeLightboxBtn   = document.getElementById('close-lightbox');
 
-அம்சானந் & சரண்யா
-திருமண அழைப்பிதழை காண கீழே உள்ள link-ஐ click செய்யவும்.
+    /* Countdown Elements */
+    const daysEl    = document.getElementById('count-days');
+    const hoursEl   = document.getElementById('count-hours');
+    const minutesEl = document.getElementById('count-minutes');
+    const secondsEl = document.getElementById('count-seconds');
+    const timerGrid = document.getElementById('countdown-grid');
 
-`;
-
-    /* ============================================
-       DOM ELEMENTS
-       ============================================ */
-    const frontCover = document.getElementById('front-cover');
-    const openBtn = document.getElementById('open-invitation-btn');
-    const invitationContent = document.getElementById('invitation-content');
-    const mapsBtn = document.getElementById('maps-btn');
-    const whatsappBtn = document.getElementById('whatsapp-share-btn');
-
-    /* ============================================
-       FRONT COVER - Open Invitation
-       ============================================ */
+    /* ----------------------------------------------------------------------
+       3. FRONT COVER OPEN TRANSITION
+       ---------------------------------------------------------------------- */
     function openInvitation() {
-        frontCover.classList.add('hidden');
-        invitationContent.classList.add('visible');
-        invitationContent.setAttribute('aria-hidden', 'false');
+        if (!frontCoverScreen || !invitationMain) return;
+
+        // Animate cover out
+        frontCoverScreen.classList.add('cover-opened');
+
+        // Reveal main content
+        invitationMain.classList.add('content-visible');
+        invitationMain.setAttribute('aria-hidden', 'false');
 
         setTimeout(function () {
-            frontCover.style.display = 'none';
+            frontCoverScreen.style.display = 'none';
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            checkFadeElements();
-        }, 850);
+            triggerScrollAnimations();
+        }, 800);
     }
 
-    if (openBtn) {
-        openBtn.addEventListener('click', openInvitation);
+    if (openInvitationBtn) {
+        openInvitationBtn.addEventListener('click', openInvitation);
     }
 
-    /* ============================================
-       COUNTDOWN TIMER
-       ============================================ */
-    const daysEl = document.getElementById('countdown-days');
-    const hoursEl = document.getElementById('countdown-hours');
-    const minutesEl = document.getElementById('countdown-minutes');
-    const secondsEl = document.getElementById('countdown-seconds');
-    const timerContainer = document.getElementById('countdown-timer');
-
+    /* ----------------------------------------------------------------------
+       4. LIVE COUNTDOWN & DURATION TIMER
+       ---------------------------------------------------------------------- */
     function updateCountdown() {
-        var now = new Date().getTime();
-        var distance = WEDDING_DATE.getTime() - now;
+        const now = new Date().getTime();
+        const difference = WEDDING_TARGET_DATE.getTime() - now;
 
-        // If wedding date has passed
-        if (distance < 0) {
-            if (timerContainer) {
-                timerContainer.innerHTML = '<p class="countdown-complete">🎊 திருமணம் நடைபெற்றது! 🎊</p>';
+        if (difference <= 0) {
+            if (timerGrid) {
+                timerGrid.innerHTML = '<div style="color: #FFE57F; font-size: 1.3rem; font-weight: bold; padding: 10px;">🎊 திருமண விழா இனிதே நடைபெற்றது! 🎊</div>';
             }
             return;
         }
 
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-        // Pad with leading zeros
         if (daysEl) daysEl.textContent = days < 10 ? '0' + days : days;
         if (hoursEl) hoursEl.textContent = hours < 10 ? '0' + hours : hours;
         if (minutesEl) minutesEl.textContent = minutes < 10 ? '0' + minutes : minutes;
         if (secondsEl) secondsEl.textContent = seconds < 10 ? '0' + seconds : seconds;
     }
 
-    // Update immediately then every second
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    /* ============================================
-       SCROLL FADE-IN ANIMATIONS
-       ============================================ */
-    function checkFadeElements() {
-        var fadeElements = document.querySelectorAll('.fade-in');
-        fadeElements.forEach(function (el) {
-            var rect = el.getBoundingClientRect();
-            var windowHeight = window.innerHeight || document.documentElement.clientHeight;
-            if (rect.top <= windowHeight * 0.88) {
-                el.classList.add('visible');
-            }
-        });
-    }
-
-    // Use IntersectionObserver for performance
-    if ('IntersectionObserver' in window) {
-        var fadeObserver = new IntersectionObserver(
-            function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        fadeObserver.unobserve(entry.target);
-                    }
-                });
-            },
-            { rootMargin: '0px 0px -12% 0px', threshold: 0.1 }
-        );
-
-        document.querySelectorAll('.fade-in').forEach(function (el) {
-            fadeObserver.observe(el);
-        });
-    } else {
-        window.addEventListener('scroll', checkFadeElements, { passive: true });
-        window.addEventListener('resize', checkFadeElements, { passive: true });
-    }
-
-    /* ============================================
-       GOOGLE MAPS
-       ============================================ */
-    if (mapsBtn) {
-        mapsBtn.href = GOOGLE_MAPS_URL;
-    }
-
-    /* ============================================
-       WHATSAPP SHARING
-       ============================================ */
+    /* ----------------------------------------------------------------------
+       5. WHATSAPP INVITATION SHARING (Formatted with Timings & Venue)
+       ---------------------------------------------------------------------- */
     function shareOnWhatsApp() {
-        var currentURL = window.location.href;
-        var fullMessage = WHATSAPP_MESSAGE + currentURL;
-        var encodedMessage = encodeURIComponent(fullMessage);
-        var whatsappURL = 'https://api.whatsapp.com/send?text=' + encodedMessage;
-        window.open(whatsappURL, '_blank', 'noopener,noreferrer');
+        const siteUrl = window.location.href.split('?')[0];
+
+        const messageText = 
+`💐 *அன்புடன் அழைக்கின்றோம்!* 💐
+
+*அம்சானந் ❤️ சரண்யா*
+திருமண அழைப்பிதழ் (Wedding Invitation)
+
+🎊 *வரவேற்பு:* 12.09.2026 (மாலை 7:00 PM - 8:00 PM)
+💍 *திருமணம்:* 13.09.2026 (காலை 10:30 AM - 11:30 AM)
+🏛️ *இடம்:* குலாலர் சமுதாய திருமண மண்டபம், கம்பம், தேனி மாவட்டம்.
+
+👇 *அழைப்பிதழை முழுமையாக காண இங்கே click செய்யவும்:*
+${siteUrl}`;
+
+        const encodedMessage = encodeURIComponent(messageText);
+        const waUrl = `https://api.whatsapp.com/send?text=${encodedMessage}`;
+        window.open(waUrl, '_blank', 'noopener,noreferrer');
     }
 
     if (whatsappBtn) {
         whatsappBtn.addEventListener('click', shareOnWhatsApp);
     }
 
-    /* ============================================
-       TOUCH FEEDBACK
-       ============================================ */
-    var allButtons = document.querySelectorAll('.open-btn, .maps-btn, .whatsapp-btn');
-    allButtons.forEach(function (btn) {
-        btn.addEventListener('touchstart', function () {
-            this.style.transform = 'scale(0.97)';
-        }, { passive: true });
-        btn.addEventListener('touchend', function () {
-            this.style.transform = '';
-        }, { passive: true });
-    });
+    /* ----------------------------------------------------------------------
+       6. GOOGLE MAPS LINK ASSIGNMENT
+       ---------------------------------------------------------------------- */
+    if (mapsBtn) {
+        mapsBtn.href = GOOGLE_MAPS_URL;
+    }
+
+    /* ----------------------------------------------------------------------
+       7. IMAGE LIGHTBOX / TAP TO ZOOM
+       ---------------------------------------------------------------------- */
+    if (mainInvitationImg && lightboxModal && lightboxImg) {
+        mainInvitationImg.addEventListener('click', function () {
+            lightboxImg.src = this.src;
+            lightboxModal.classList.add('active');
+            lightboxModal.setAttribute('aria-hidden', 'false');
+        });
+    }
+
+    if (closeLightboxBtn && lightboxModal) {
+        closeLightboxBtn.addEventListener('click', function () {
+            lightboxModal.classList.remove('active');
+            lightboxModal.setAttribute('aria-hidden', 'true');
+        });
+
+        lightboxModal.addEventListener('click', function (e) {
+            if (e.target === lightboxModal) {
+                lightboxModal.classList.remove('active');
+                lightboxModal.setAttribute('aria-hidden', 'true');
+            }
+        });
+    }
+
+    /* ----------------------------------------------------------------------
+       8. SCROLL FADE-IN ANIMATIONS
+       ---------------------------------------------------------------------- */
+    function triggerScrollAnimations() {
+        const animatedElements = document.querySelectorAll('.anim-fade');
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+            animatedElements.forEach(function (el) {
+                observer.observe(el);
+            });
+        } else {
+            animatedElements.forEach(function (el) {
+                el.classList.add('is-revealed');
+            });
+        }
+    }
+
+    /* ----------------------------------------------------------------------
+       9. FLOATING ROSE / AUSPICIOUS PETALS
+       ---------------------------------------------------------------------- */
+    function createFloatingPetals() {
+        const container = document.getElementById('petals-container');
+        if (!container) return;
+
+        const petalSymbols = ['🌸', '🌺', '🌼', '✨'];
+        const petalCount = 12;
+
+        for (let i = 0; i < petalCount; i++) {
+            const petal = document.createElement('span');
+            petal.className = 'petal';
+            petal.textContent = petalSymbols[Math.floor(Math.random() * petalSymbols.length)];
+            petal.style.left = Math.random() * 95 + '%';
+            petal.style.animationDuration = (6 + Math.random() * 8) + 's';
+            petal.style.animationDelay = (Math.random() * 6) + 's';
+            petal.style.fontSize = (0.9 + Math.random() * 0.7) + 'rem';
+            container.appendChild(petal);
+        }
+    }
+
+    // Initialize floating petals
+    createFloatingPetals();
 
 })();

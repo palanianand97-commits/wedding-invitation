@@ -2,223 +2,331 @@
 <html lang="ta">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="description" content="அம்சானந் & சரண்யா திருமண அழைப்பிதழ் - Wedding Invitation">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="அம்சானந் & சரண்யா திருமண அழைப்பிதழ் - Wedding Invitation Website">
     <meta name="theme-color" content="#5C1A1A">
 
-    <!-- Open Graph for WhatsApp Preview -->
+    <!-- Open Graph for WhatsApp & Social Media Preview -->
     <meta property="og:title" content="💐 அம்சானந் & சரண்யா - திருமண அழைப்பிதழ்">
-    <meta property="og:description" content="அன்புடன் அழைக்கின்றோம்! திருமண அழைப்பிதழை காண இங்கே click செய்யவும்.">
+    <meta property="og:description" content="அன்புடன் அழைக்கின்றோம்! 12 & 13 செப்டம்பர் 2026 | குலாலர் சமுதாய திருமண மண்டபம், கம்பம்.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="images/front-cover.jpg">
 
-    <title>அம்சானந் & சரண்யா - திருமண அழைப்பிதழ்</title>
+    <title>அம்சானந் & சரண்யா - திருமண அழைப்பிதழ் | Wedding Invitation</title>
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts for Traditional & Elegant Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@400;600;700;900&family=Playfair+Display:wght@400;600;700&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta+Malar:wght@400;600;700;800&family=Noto+Serif+Tamil:wght@400;600;700;900&family=Cinzel:wght@500;700;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <!-- Stylesheet with cache busting -->
+    <link rel="stylesheet" href="style.css?v=2.0">
 </head>
 <body>
 
-    <!-- ========================================== -->
-    <!-- FRONT COVER - Shows the invitation cover   -->
-    <!-- ========================================== -->
-    <section id="front-cover" class="front-cover">
+    <!-- ========================================================= -->
+    <!-- FLOATING PETALS ANIMATION (Soft Auspicious Touch)         -->
+    <!-- ========================================================= -->
+    <div id="petals-container" aria-hidden="true"></div>
 
-        <!-- Front cover image as main visual -->
-        <div class="cover-image-wrapper">
-            <img 
-                src="images/front-cover.jpg" 
-                alt="திருமண அழைப்பிதழ் - அம்சானந் & சரண்யா" 
-                class="cover-image"
-            >
-        </div>
+    <!-- ========================================================= -->
+    <!-- 1. FRONT COVER - Traditional Invitation Cover Card        -->
+    <!-- ========================================================= -->
+    <section id="front-cover" class="front-cover-screen">
+        <div class="cover-container">
+            
+            <!-- Traditional Top Motifs -->
+            <div class="cover-header-ornament">
+                <span class="om-tag">🕉️ ஸ்ரீ கணேஷாய நம: 🕉️</span>
+            </div>
 
-        <!-- Open button overlaid at the bottom -->
-        <div class="cover-btn-area">
-            <button id="open-invitation-btn" class="open-btn" aria-label="Open Wedding Invitation">
-                <span class="btn-icon">💌</span>
-                <span class="btn-text">அழைப்பிதழை திறக்க</span>
-            </button>
+            <!-- Front Cover Card Frame -->
+            <div class="cover-card-frame">
+                <div class="card-corner cc-tl"></div>
+                <div class="card-corner cc-tr"></div>
+                <div class="card-corner cc-bl"></div>
+                <div class="card-corner cc-br"></div>
+                
+                <img 
+                    src="images/front-cover.jpg?v=2.0" 
+                    alt="அம்சானந் & சரண்யா திருமண அழைப்பிதழ் முகப்பு" 
+                    class="front-cover-img"
+                    id="front-cover-img"
+                >
+            </div>
+
+            <!-- Open Invitation Action Button -->
+            <div class="cover-action-wrap">
+                <button id="open-invitation-btn" class="open-card-btn" aria-label="அழைப்பிதழை திறக்க">
+                    <span class="btn-lamp">🪔</span>
+                    <span class="btn-title">அழைப்பிதழை திறக்க</span>
+                    <span class="btn-sparkle">✨</span>
+                </button>
+                <p class="open-hint">👆 அழைப்பிதழை காண மேலே அழுத்தவும்</p>
+            </div>
+
         </div>
     </section>
 
-    <!-- ========================================== -->
-    <!-- MAIN INVITATION CONTENT                    -->
-    <!-- ========================================== -->
-    <main id="invitation-content" class="invitation-content" aria-hidden="true">
+    <!-- ========================================================= -->
+    <!-- 2. MAIN INVITATION CONTENT (Revealed upon opening)        -->
+    <!-- ========================================================= -->
+    <main id="invitation-content" class="invitation-main" aria-hidden="true">
 
-        <!-- Top decorative header -->
-        <div class="section-header fade-in">
-            <div class="gold-divider">
-                <span class="divider-ornament">🪔 ✦ 🕉️ ✦ 🪔</span>
+        <!-- Top Header & Auspicious Blessing -->
+        <header class="main-header anim-fade">
+            <div class="auspicious-banner">
+                <span class="lamp-icon glow">🪔</span>
+                <span class="mantra-text">🕉️ ஸ்ரீ கணேஷாய நம: 🕉️</span>
+                <span class="lamp-icon glow">🪔</span>
             </div>
-        </div>
+            
+            <h1 class="main-couple-title">அம்சானந் <span class="heart-symbol">❤️</span> சரண்யா</h1>
+            <p class="sub-invitation-text">இனிதே இணையும் இவ்விரு மனங்களின் திருமண விழா</p>
+            <div class="traditional-divider">
+                <span>❖ ════ 🪔 ════ ❖</span>
+            </div>
+        </header>
 
-        <!-- ============================== -->
-        <!-- Wedding Invitation Image       -->
-        <!-- ============================== -->
-        <section class="invitation-image-section fade-in">
-            <div class="image-frame">
-                <div class="frame-corner fc-tl"></div>
-                <div class="frame-corner fc-tr"></div>
-                <div class="frame-corner fc-bl"></div>
-                <div class="frame-corner fc-br"></div>
+        <!-- Full Wedding Invitation Card Image Section -->
+        <section class="card-display-section anim-fade">
+            <div class="section-badge">
+                <span>📜 திருமண அழைப்பிதழ் மடல்</span>
+            </div>
+
+            <div class="invitation-image-box">
+                <div class="gold-corner gc-tl"></div>
+                <div class="gold-corner gc-tr"></div>
+                <div class="gold-corner gc-bl"></div>
+                <div class="gold-corner gc-br"></div>
+                
                 <img 
-                    src="images/wedding-invitation.jpg" 
-                    alt="அம்சானந் & சரண்யா திருமண அழைப்பிதழ் - Wedding Invitation Card" 
-                    class="invitation-image"
+                    src="images/wedding-invitation.jpg?v=2.0" 
+                    alt="அம்சானந் & சரண்யா திருமண அழைப்பிதழ் முழு விவரம்" 
+                    class="main-invitation-img"
+                    id="main-invitation-img"
                     loading="lazy"
                 >
             </div>
+            <p class="zoom-note">🔍 அழைப்பிதழை பெரிதாக்கி பார்க்க படத்தில் தொடுங்கள்</p>
         </section>
 
-        <!-- ============================== -->
-        <!-- Countdown Timer                -->
-        <!-- ============================== -->
-        <section class="countdown-section fade-in">
-            <div class="countdown-card">
-                <h3 class="countdown-title">💍 திருமணத்திற்கு</h3>
-
-                <div class="gold-divider small">
-                    <span class="divider-ornament">✦ ✧ ✦</span>
+        <!-- ===================================================== -->
+        <!-- 3. LIVE COUNTDOWN & DURATION SECTION                  -->
+        <!-- ===================================================== -->
+        <section class="countdown-section anim-fade">
+            <div class="traditional-card countdown-card">
+                <div class="card-ornament-top">
+                    <span>🪔 ✦ 💍 ✦ 🪔</span>
                 </div>
-
-                <div class="countdown-timer" id="countdown-timer">
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="countdown-days">00</span>
-                        <span class="countdown-label">நாட்கள்</span>
-                    </div>
-                    <div class="countdown-separator">:</div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="countdown-hours">00</span>
-                        <span class="countdown-label">மணி</span>
-                    </div>
-                    <div class="countdown-separator">:</div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="countdown-minutes">00</span>
-                        <span class="countdown-label">நிமிடம்</span>
-                    </div>
-                    <div class="countdown-separator">:</div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="countdown-seconds">00</span>
-                        <span class="countdown-label">விநாடி</span>
-                    </div>
-                </div>
-
-                <p class="countdown-date">📅 13 செப்டம்பர் 2026 | ஞாயிற்றுக்கிழமை</p>
-            </div>
-        </section>
-
-        <!-- ============================== -->
-        <!-- Wedding Details Summary        -->
-        <!-- ============================== -->
-        <section class="wedding-details fade-in">
-            <div class="details-card">
-                <h3 class="details-title">திருமண விவரங்கள்</h3>
                 
-                <div class="gold-divider small">
-                    <span class="divider-ornament">✦ ✧ ✦</span>
+                <h2 class="section-heading">திருமண நிகழ்விற்கு இன்னும்</h2>
+                <p class="countdown-subtext">13 செப்டம்பர் 2026 • காலை 10:30 AM</p>
+
+                <!-- Live Countdown Timer -->
+                <div class="countdown-grid" id="countdown-grid">
+                    <div class="time-box">
+                        <span class="time-val" id="count-days">00</span>
+                        <span class="time-lbl">நாட்கள்</span>
+                    </div>
+                    <div class="time-sep">:</div>
+                    <div class="time-box">
+                        <span class="time-val" id="count-hours">00</span>
+                        <span class="time-lbl">மணி</span>
+                    </div>
+                    <div class="time-sep">:</div>
+                    <div class="time-box">
+                        <span class="time-val" id="count-minutes">00</span>
+                        <span class="time-lbl">நிமிடம்</span>
+                    </div>
+                    <div class="time-sep">:</div>
+                    <div class="time-box">
+                        <span class="time-val" id="count-seconds">00</span>
+                        <span class="time-lbl">விநாடி</span>
+                    </div>
                 </div>
 
-                <!-- Reception -->
-                <div class="event-block">
-                    <h4 class="event-title">🎊 வரவேற்பு</h4>
-                    <p class="event-date">📅 12.09.2026 | சனிக்கிழமை</p>
-                    <p class="event-time">🕖 மாலை 7:00 PM - 8:00 PM</p>
-                </div>
-
-                <div class="event-divider">❋</div>
-
-                <!-- Marriage -->
-                <div class="event-block">
-                    <h4 class="event-title">💍 திருமணம்</h4>
-                    <p class="event-date">📅 13.09.2026 | ஞாயிற்றுக்கிழமை</p>
-                    <p class="event-time">🕥 காலை 10:30 AM - 11:30 AM</p>
+                <div class="blessing-quote">
+                    <span>"இரு மனங்கள் இணையும் இந்நாளில் தங்கள் ஆசிகள் தேவை!"</span>
                 </div>
             </div>
         </section>
 
-        <!-- ============================== -->
-        <!-- Location Section               -->
-        <!-- ============================== -->
-        <section class="location-section fade-in">
-            <div class="location-card">
-                <div class="location-icon">📍</div>
-                <h3 class="location-title">திருமண மண்டபம்</h3>
+        <!-- ===================================================== -->
+        <!-- 4. EVENT SCHEDULE & DURATION DETAILS                  -->
+        <!-- ===================================================== -->
+        <section class="events-schedule-section anim-fade">
+            <div class="section-badge">
+                <span>🗓️ நிகழ்ச்சி நிரல் & கால அளவு (Schedule & Timings)</span>
+            </div>
 
-                <div class="gold-divider small">
-                    <span class="divider-ornament">✦ ✧ ✦</span>
+            <div class="events-container">
+
+                <!-- 1. RECEPTION EVENT CARD -->
+                <div class="traditional-card event-card reception-card">
+                    <div class="event-icon-badge">🎊</div>
+                    <h3 class="event-name">வரவேற்பு விழா (Reception)</h3>
+                    
+                    <div class="event-details-list">
+                        <div class="event-detail-item">
+                            <span class="detail-icon">📅</span>
+                            <div class="detail-content">
+                                <strong>தேதி:</strong>
+                                <span>12 செப்டம்பர் 2026 (12.09.2026)</span>
+                                <span class="day-highlight">சனிக்கிழமை</span>
+                            </div>
+                        </div>
+
+                        <div class="event-detail-item">
+                            <span class="detail-icon">⏰</span>
+                            <div class="detail-content">
+                                <strong>நேரம் (Duration):</strong>
+                                <span class="time-highlight">மாலை 7:00 PM முதல் 8:00 PM வரை</span>
+                                <span class="duration-tag">⏱️ 1 மணி நேரம்</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add to Calendar Button -->
+                    <a 
+                        href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%E0%AE%85%E0%AE%AE%E0%AF%8D%E0%AE%9A%E0%AE%BE%E0%AE%A9%E0%AE%A8%E0%AF%8D+%26+%E0%AE%9 need%E0%AE%B0%E0%AE%A3%E0%AF%8D%E0%AE%AF%E0%AE%BE+%E0%AE%B5%E0%AE%B0%E0%AE%B5%E0%AF%87%E0%AE%B1%E0%AF%8D%E0%AE%AA%E0%AF%81+%E0%AE%B5%E0%AE%BF%E0%AE%B4%E0%AE%BE&dates=20260912T133000Z/20260912T143000Z&details=%E0%AE%85%E0%AE%AE%E0%AF%8D%E0%AE%9A%E0%AE%BE%E0%AE%A9%E0%AE%A8%E0%AF%8D+%26+%E0%AE%9 need%E0%AE%B0%E0%AE%A3%E0%AF%8D%E0%AE%AF%E0%AE%BE+%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AE%A3+%E0%AE%B5%E0%AE%B0%E0%AE%B5%E0%AF%87%E0%AE%B1%E0%AF%8D%E0%AE%AA%E0%AF%81+%E0%AE%B5%E0%AE%BF%E0%AE%B4%E0%AE%BE&location=%E0%AE%95%E0%AF%81%E0%AE%B2%E0%AE%BE%E0%AE%B2%E0%AE%B0%E0%AF%8D+%E0%AE%9A%E0%AE%AE%E0%AF%81%E0%AE%A4%E0%AE%BE%E0%AE%AF+%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AE%A3+%E0%AE%AE%E0%AE%A3%E0%AF%8D%E0%AE%9F%E0%AE%AA%E0%AE%AE%E0%AF%8D,+%E0%AE%95%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AE%AE%E0%AF%8D" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        class="calendar-sync-btn"
+                    >
+                        <span>🗓️ Calendar-ல் நினைவூட்டல் வைக்க (Add to Calendar)</span>
+                    </a>
                 </div>
 
-                <p class="venue-name-tamil">குலாலர் சமுதாய திருமண மண்டபம்</p>
-                <p class="venue-location-tamil">கம்பம், தேனி மாவட்டம்</p>
+                <!-- 2. MARRIAGE EVENT CARD -->
+                <div class="traditional-card event-card marriage-card">
+                    <div class="event-icon-badge">💍</div>
+                    <h3 class="event-name">திருமண விழா (Marriage)</h3>
+                    
+                    <div class="event-details-list">
+                        <div class="event-detail-item">
+                            <span class="detail-icon">📅</span>
+                            <div class="detail-content">
+                                <strong>தேதி:</strong>
+                                <span>13 செப்டம்பர் 2026 (13.09.2026)</span>
+                                <span class="day-highlight">ஞாயிற்றுக்கிழமை</span>
+                            </div>
+                        </div>
 
-                <div class="venue-english">
-                    <p>Kulalar Samudaya Thirumana Mandapam</p>
-                    <p>Kambam, Theni District</p>
+                        <div class="event-detail-item">
+                            <span class="detail-icon">⏰</span>
+                            <div class="detail-content">
+                                <strong>முகூர்த்த நேரம் (Duration):</strong>
+                                <span class="time-highlight">காலை 10:30 AM முதல் 11:30 AM வரை</span>
+                                <span class="duration-tag">⏱️ 1 மணி நேரம்</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add to Calendar Button -->
+                    <a 
+                        href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%E0%AE%85%E0%AE%AE%E0%AF%8D%E0%AE%9A%E0%AE%BE%E0%AE%A9%E0%AE%A8%E0%AF%8D+%26+%E0%AE%9 need%E0%AE%B0%E0%AE%A3%E0%AF%8D%E0%AE%AF%E0%AE%BE+%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AE%A3+%E0%AE%B5%E0%AE%BF%E0%AE%B4%E0%AE%BE&dates=20260913T050000Z/20260913T060000Z&details=%E0%AE%85%E0%AE%AE%E0%AF%8D%E0%AE%9A%E0%AE%BE%E0%AE%A9%E0%AE%A8%E0%AF%8D+%26+%E0%AE%9 need%E0%AE%B0%E0%AE%A3%E0%AF%8D%E0%AE%AF%E0%AE%BE+%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AE%A3%E0%AE%AE%E0%AF%8D&location=%E0%AE%95%E0%AF%81%E0%AE%B2%E0%AE%BE%E0%AE%B2%E0%AE%B0%E0%AF%8D+%E0%AE%9A%E0%AE%AE%E0%AF%81%E0%AE%A4%E0%AE%BE%E0%AE%AF+%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AE%A3+%E0%AE%AE%E0%AE%A3%E0%AF%8D%E0%AE%9F%E0%AE%AA%E0%AE%AE%E0%AF%8D,+%E0%AE%95%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AE%AE%E0%AF%8D" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        class="calendar-sync-btn"
+                    >
+                        <span>🗓️ Calendar-ல் நினைவூட்டல் வைக்க (Add to Calendar)</span>
+                    </a>
                 </div>
 
-                <!-- Google Maps Button -->
+            </div>
+        </section>
+
+        <!-- ===================================================== -->
+        <!-- 5. VENUE & LOCATION SECTION (Exact Google Maps Link)  -->
+        <!-- ===================================================== -->
+        <section class="venue-location-section anim-fade">
+            <div class="traditional-card venue-card">
+                <div class="venue-lamp-header">
+                    <span class="venue-icon">🏛️</span>
+                </div>
+
+                <h3 class="venue-title">திருமண மண்டபம் (Venue)</h3>
+                
+                <div class="gold-divider-line"></div>
+
+                <p class="venue-tamil-name">குலாலர் சமுதாய திருமண மண்டபம்</p>
+                <p class="venue-tamil-city">கம்பம், தேனி மாவட்டம்.</p>
+
+                <div class="venue-eng-box">
+                    <p class="venue-eng-name">Kulalar Samudaya Thirumana Mandapam</p>
+                    <p class="venue-eng-city">Kambam, Theni District</p>
+                </div>
+
+                <!-- Google Maps Direction Button -->
                 <a 
                     id="maps-btn" 
-                    href="#" 
-                    class="maps-btn" 
+                    href="https://www.google.com/maps/place/9%C2%B043'58.6%22N+77%C2%B016'58.6%22E/@9.7329408,77.2829363,817m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d9.7329408!4d77.2829363?entry=ttu" 
+                    class="action-btn maps-action-btn" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    aria-label="Open venue location in Google Maps"
+                    aria-label="Google Maps-ல் திருமண மண்டபம் வழி பார்க்க"
                 >
-                    <span class="btn-icon">📍</span>
-                    <span class="btn-text">Google Maps-ல் Location பார்க்க</span>
+                    <span class="btn-ico">📍</span>
+                    <span class="btn-txt">Google Maps-ல் Location பார்க்க</span>
                 </a>
             </div>
         </section>
 
-        <!-- ============================== -->
-        <!-- WhatsApp Share Section          -->
-        <!-- ============================== -->
-        <section class="share-section fade-in">
-            <div class="share-card">
-                <h3 class="share-title">அழைப்பிதழை பகிரவும்</h3>
-                
-                <div class="gold-divider small">
-                    <span class="divider-ornament">✦ ✧ ✦</span>
+        <!-- ===================================================== -->
+        <!-- 6. WHATSAPP SHARE SECTION                             -->
+        <!-- ===================================================== -->
+        <section class="share-invitation-section anim-fade">
+            <div class="traditional-card whatsapp-card">
+                <div class="share-icon-wrap">
+                    <span class="wa-ico">💬</span>
                 </div>
-
-                <p class="share-description">உங்கள் அன்பானவர்களுக்கு இந்த அழைப்பிதழை பகிருங்கள்</p>
+                
+                <h3 class="share-heading">அழைப்பிதழை பகிரவும்</h3>
+                <p class="share-desc">உங்கள் உறவினர்கள் மற்றும் நண்பர்களுக்கு இந்த திருமண அழைப்பிதழை WhatsApp-ல் எளிதாக பகிருங்கள்.</p>
 
                 <!-- WhatsApp Share Button -->
                 <button 
                     id="whatsapp-share-btn" 
-                    class="whatsapp-btn"
-                    aria-label="Share invitation on WhatsApp"
+                    class="action-btn whatsapp-action-btn"
+                    aria-label="WhatsApp-ல் பகிரவும்"
                 >
-                    <span class="btn-icon">💬</span>
-                    <span class="btn-text">WhatsApp-ல் பகிரவும்</span>
+                    <span class="btn-ico">📱</span>
+                    <span class="btn-txt">WhatsApp-ல் பகிரவும்</span>
                 </button>
             </div>
         </section>
 
-        <!-- ============================== -->
-        <!-- Footer                         -->
-        <!-- ============================== -->
-        <footer class="footer fade-in">
-            <div class="footer-ornament">
+        <!-- ===================================================== -->
+        <!-- 7. FOOTER BLESSINGS                                  -->
+        <!-- ===================================================== -->
+        <footer class="auspicious-footer anim-fade">
+            <div class="footer-lamps">
                 <span>🪔</span>
-                <span>✦ ✧ ✦</span>
+                <span>❖ ════ 🕉️ ════ ❖</span>
                 <span>🪔</span>
             </div>
-            <p class="footer-text">அன்புடன் அழைக்கின்றோம்</p>
-            <p class="footer-names">அம்சானந் & சரண்யா</p>
-            <div class="footer-ornament bottom">
+
+            <p class="footer-welcome-text">தங்கள் வருகையே எங்கள் மகிழ்ச்சி!</p>
+            <h4 class="footer-couple-names">அம்சானந் & சரண்யா</h4>
+            <p class="footer-bless-quote">அன்புடன் வருக! ஆசீர்வதிக்க!</p>
+
+            <div class="footer-bottom-pattern">
                 <span>❈ ❉ ❈ ❉ ❈</span>
             </div>
         </footer>
+
     </main>
 
-    <script src="script.js"></script>
+    <!-- ========================================================= -->
+    <!-- IMAGE LIGHTBOX / MODAL (Tap to zoom image)                -->
+    <!-- ========================================================= -->
+    <div id="image-lightbox" class="lightbox-modal" aria-hidden="true">
+        <span class="close-lightbox" id="close-lightbox">&times;</span>
+        <img class="lightbox-img" id="lightbox-img" alt="Zoomed Invitation">
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js?v=2.0"></script>
 </body>
 </html>
