@@ -14,7 +14,7 @@
 
     <title>அம்சானந் & சரண்யா - திருமண அழைப்பிதழ்</title>
 
-    <!-- Google Fonts for elegant Tamil & English typography -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@400;600;700;900&family=Playfair+Display:wght@400;600;700&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
@@ -24,81 +24,25 @@
 <body>
 
     <!-- ========================================== -->
-    <!-- FRONT COVER - The Outer Invitation Cover   -->
+    <!-- FRONT COVER - Shows the invitation cover   -->
     <!-- ========================================== -->
     <section id="front-cover" class="front-cover">
-        <!-- Decorative corner ornaments -->
-        <div class="corner-ornament top-left"></div>
-        <div class="corner-ornament top-right"></div>
-        <div class="corner-ornament bottom-left"></div>
-        <div class="corner-ornament bottom-right"></div>
 
-        <!-- Floating decorative elements -->
-        <div class="floating-flowers">
-            <span class="flower f1">✿</span>
-            <span class="flower f2">❀</span>
-            <span class="flower f3">✿</span>
-            <span class="flower f4">❀</span>
-            <span class="flower f5">✿</span>
-            <span class="flower f6">❀</span>
+        <!-- Front cover image as main visual -->
+        <div class="cover-image-wrapper">
+            <img 
+                src="images/front-cover.jpg" 
+                alt="திருமண அழைப்பிதழ் - அம்சானந் & சரண்யா" 
+                class="cover-image"
+            >
         </div>
 
-        <!-- Brass lamp decorations -->
-        <div class="lamp lamp-left">
-            <div class="lamp-body">
-                <div class="lamp-flame"></div>
-                <div class="lamp-icon">🪔</div>
-            </div>
-        </div>
-        <div class="lamp lamp-right">
-            <div class="lamp-body">
-                <div class="lamp-flame"></div>
-                <div class="lamp-icon">🪔</div>
-            </div>
-        </div>
-
-        <!-- Main cover content -->
-        <div class="cover-content">
-            <!-- Ganesha / Traditional motif -->
-            <div class="ganesha-symbol" aria-label="Ganesha Symbol">
-                <span class="om-symbol">🕉️</span>
-            </div>
-
-            <div class="gold-divider">
-                <span class="divider-ornament">⟡ ❊ ⟡</span>
-            </div>
-
-            <!-- Title -->
-            <h1 class="cover-title">திருமண அழைப்பிதழ்</h1>
-
-            <div class="gold-divider small">
-                <span class="divider-ornament">✦ ✧ ✦</span>
-            </div>
-
-            <!-- Couple Names -->
-            <div class="couple-names">
-                <h2 class="groom-name">அம்சானந்</h2>
-                <span class="ampersand">&</span>
-                <h2 class="bride-name">சரண்யா</h2>
-            </div>
-
-            <div class="gold-divider small">
-                <span class="divider-ornament">✦ ✧ ✦</span>
-            </div>
-
-            <!-- Invitation text -->
-            <p class="invitation-text">அன்புடன் அழைக்கின்றோம்</p>
-
-            <!-- Open button -->
+        <!-- Open button overlaid at the bottom -->
+        <div class="cover-btn-area">
             <button id="open-invitation-btn" class="open-btn" aria-label="Open Wedding Invitation">
                 <span class="btn-icon">💌</span>
                 <span class="btn-text">அழைப்பிதழை திறக்க</span>
             </button>
-        </div>
-
-        <!-- Bottom decorative border -->
-        <div class="cover-bottom-border">
-            <span>❈ ❉ ❈ ❉ ❈</span>
         </div>
     </section>
 
@@ -133,6 +77,43 @@
         </section>
 
         <!-- ============================== -->
+        <!-- Countdown Timer                -->
+        <!-- ============================== -->
+        <section class="countdown-section fade-in">
+            <div class="countdown-card">
+                <h3 class="countdown-title">💍 திருமணத்திற்கு</h3>
+
+                <div class="gold-divider small">
+                    <span class="divider-ornament">✦ ✧ ✦</span>
+                </div>
+
+                <div class="countdown-timer" id="countdown-timer">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="countdown-days">00</span>
+                        <span class="countdown-label">நாட்கள்</span>
+                    </div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="countdown-hours">00</span>
+                        <span class="countdown-label">மணி</span>
+                    </div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="countdown-minutes">00</span>
+                        <span class="countdown-label">நிமிடம்</span>
+                    </div>
+                    <div class="countdown-separator">:</div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="countdown-seconds">00</span>
+                        <span class="countdown-label">விநாடி</span>
+                    </div>
+                </div>
+
+                <p class="countdown-date">📅 13 செப்டம்பர் 2026 | ஞாயிற்றுக்கிழமை</p>
+            </div>
+        </section>
+
+        <!-- ============================== -->
         <!-- Wedding Details Summary        -->
         <!-- ============================== -->
         <section class="wedding-details fade-in">
@@ -146,8 +127,8 @@
                 <!-- Reception -->
                 <div class="event-block">
                     <h4 class="event-title">🎊 வரவேற்பு</h4>
-                    <p class="event-date">📅 12.09.2026</p>
-                    <p class="event-time">🕖 மாலை 7:00 - 8:00 மணி</p>
+                    <p class="event-date">📅 12.09.2026 | சனிக்கிழமை</p>
+                    <p class="event-time">🕖 மாலை 7:00 PM - 8:00 PM</p>
                 </div>
 
                 <div class="event-divider">❋</div>
@@ -155,8 +136,8 @@
                 <!-- Marriage -->
                 <div class="event-block">
                     <h4 class="event-title">💍 திருமணம்</h4>
-                    <p class="event-date">📅 13.09.2026</p>
-                    <p class="event-time">🕥 காலை 10:30 - 11:30 மணி</p>
+                    <p class="event-date">📅 13.09.2026 | ஞாயிற்றுக்கிழமை</p>
+                    <p class="event-time">🕥 காலை 10:30 AM - 11:30 AM</p>
                 </div>
             </div>
         </section>
@@ -232,7 +213,7 @@
             </div>
             <p class="footer-text">அன்புடன் அழைக்கின்றோம்</p>
             <p class="footer-names">அம்சானந் & சரண்யா</p>
-            <div class="footer-ornament">
+            <div class="footer-ornament bottom">
                 <span>❈ ❉ ❈ ❉ ❈</span>
             </div>
         </footer>
