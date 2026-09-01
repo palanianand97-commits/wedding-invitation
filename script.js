@@ -18,7 +18,7 @@
        ============================================ */
 
     // Google Maps URL - UPDATE THIS with the actual venue location
-    const GOOGLE_MAPS_URL = 'https://www.google.com/maps/search/Kulalar+Samudaya+Thirumana+Mandapam+Kambam+Theni';
+    const GOOGLE_MAPS_URL = 'https://www.google.com/maps/place/9%C2%B043\'58.6%22N+77%C2%B016\'58.6%22E/@9.7329408,77.2829363,817m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d9.7329408!4d77.2829363?entry=ttu';
 
     // WhatsApp pre-filled message
     const WHATSAPP_MESSAGE = `💐 அன்புடன் அழைக்கின்றோம்!
