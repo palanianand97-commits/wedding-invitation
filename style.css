@@ -1,0 +1,965 @@
+/* ============================================
+   Wedding Invitation - South Indian Traditional
+   Style: Gold, Cream, Maroon, Dark Brown
+   Mobile-first responsive design
+   ============================================ */
+
+/* ---- CSS Custom Properties ---- */
+:root {
+    /* Color Palette - South Indian Traditional */
+    --gold:          #C5952B;
+    --gold-light:    #D4A94B;
+    --gold-dark:     #A67C1A;
+    --gold-shimmer:  #E8C966;
+    --cream:         #FFF8E7;
+    --cream-dark:    #F5EBCF;
+    --maroon:        #5C1A1A;
+    --maroon-light:  #7A2828;
+    --maroon-deep:   #3D0F0F;
+    --dark-brown:    #2A1506;
+    --brown:         #4A2C1A;
+    --red-vermillion:#C62828;
+    --text-dark:     #2A1506;
+    --text-gold:     #C5952B;
+    --white:         #FFFFFF;
+
+    /* Typography */
+    --font-tamil:    'Noto Serif Tamil', serif;
+    --font-display:  'Cinzel', 'Playfair Display', serif;
+    --font-body:     'Noto Serif Tamil', 'Playfair Display', serif;
+
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+
+    /* Borders */
+    --border-gold: 2px solid var(--gold);
+    --border-gold-light: 1px solid var(--gold-light);
+}
+
+/* ---- Reset & Base ---- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--font-tamil);
+    background-color: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-family: var(--font-tamil);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ============================================
+   FRONT COVER SECTION
+   ============================================ */
+.front-cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow: hidden;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+
+    /* Rich traditional background */
+    background: 
+        radial-gradient(ellipse at center, rgba(92, 26, 26, 0.85) 0%, rgba(61, 15, 15, 0.95) 70%),
+        url('images/front-cover.png') center/cover no-repeat;
+    background-color: var(--maroon-deep);
+}
+
+/* Subtle texture overlay */
+.front-cover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 3px,
+            rgba(197, 149, 43, 0.02) 3px,
+            rgba(197, 149, 43, 0.02) 4px
+        );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Cover is hidden after opening */
+.front-cover.hidden {
+    opacity: 0;
+    transform: scale(1.05);
+    pointer-events: none;
+}
+
+/* ---- Corner Ornaments ---- */
+.corner-ornament {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    z-index: 2;
+}
+
+.corner-ornament::before,
+.corner-ornament::after {
+    content: '';
+    position: absolute;
+    background: var(--gold);
+    opacity: 0.5;
+}
+
+.top-left { top: 12px; left: 12px; }
+.top-right { top: 12px; right: 12px; }
+.bottom-left { bottom: 12px; left: 12px; }
+.bottom-right { bottom: 12px; right: 12px; }
+
+.top-left::before, .bottom-right::before { width: 50px; height: 2px; }
+.top-left::after, .bottom-right::after { width: 2px; height: 50px; }
+
+.top-right::before, .bottom-left::before { width: 50px; height: 2px; right: 0; }
+.top-right::after, .bottom-left::after { width: 2px; height: 50px; right: 0; }
+
+.bottom-left::before, .bottom-right::before { bottom: 0; }
+.bottom-left::after, .bottom-right::after { bottom: 0; }
+
+/* ---- Gold Border Frame ---- */
+.front-cover::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 1px solid rgba(197, 149, 43, 0.3);
+    border-radius: 4px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* ---- Floating Flowers ---- */
+.floating-flowers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.flower {
+    position: absolute;
+    font-size: 1.2rem;
+    opacity: 0.25;
+    color: var(--gold-light);
+    animation: floatFlower 8s ease-in-out infinite;
+}
+
+.f1 { top: 10%; left: 8%; animation-delay: 0s; }
+.f2 { top: 25%; right: 10%; animation-delay: 1.5s; font-size: 1rem; }
+.f3 { top: 55%; left: 5%; animation-delay: 3s; }
+.f4 { top: 70%; right: 8%; animation-delay: 4.5s; font-size: 0.9rem; }
+.f5 { top: 85%; left: 12%; animation-delay: 2s; font-size: 1.1rem; }
+.f6 { top: 40%; right: 5%; animation-delay: 5s; }
+
+@keyframes floatFlower {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-12px) rotate(5deg); }
+    50% { transform: translateY(-6px) rotate(-3deg); }
+    75% { transform: translateY(-15px) rotate(4deg); }
+}
+
+/* ---- Brass Lamps ---- */
+.lamp {
+    position: absolute;
+    bottom: 18%;
+    z-index: 3;
+    font-size: 2rem;
+    opacity: 0.6;
+}
+
+.lamp-left { left: 8%; }
+.lamp-right { right: 8%; }
+
+.lamp-body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lamp-flame {
+    width: 8px;
+    height: 14px;
+    background: radial-gradient(ellipse at bottom, var(--gold-shimmer) 0%, rgba(232, 201, 102, 0) 100%);
+    border-radius: 50% 50% 20% 20%;
+    animation: flicker 2s ease-in-out infinite alternate;
+    margin-bottom: -4px;
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 0.8; transform: scaleY(1) scaleX(1); }
+    25% { opacity: 1; transform: scaleY(1.1) scaleX(0.9); }
+    50% { opacity: 0.7; transform: scaleY(0.95) scaleX(1.05); }
+    75% { opacity: 1; transform: scaleY(1.08) scaleX(0.95); }
+}
+
+.lamp-icon {
+    font-size: 2.2rem;
+    filter: drop-shadow(0 0 8px rgba(232, 201, 102, 0.4));
+}
+
+/* ---- Cover Content ---- */
+.cover-content {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    padding: var(--space-xl);
+    max-width: 420px;
+    width: 90%;
+    animation: fadeInUp 1.2s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ganesha Symbol */
+.ganesha-symbol {
+    margin-bottom: var(--space-md);
+}
+
+.om-symbol {
+    font-size: 3rem;
+    filter: drop-shadow(0 0 10px rgba(232, 201, 102, 0.3));
+    display: inline-block;
+    animation: gentleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes gentleGlow {
+    from { filter: drop-shadow(0 0 8px rgba(232, 201, 102, 0.2)); }
+    to { filter: drop-shadow(0 0 16px rgba(232, 201, 102, 0.5)); }
+}
+
+/* Gold Dividers */
+.gold-divider {
+    text-align: center;
+    margin: var(--space-md) 0;
+    color: var(--gold);
+    font-size: 1rem;
+    letter-spacing: 6px;
+    opacity: 0.7;
+}
+
+.gold-divider.small {
+    margin: var(--space-sm) 0;
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+}
+
+.divider-ornament {
+    display: inline-block;
+}
+
+/* Cover Title */
+.cover-title {
+    font-family: var(--font-tamil);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Couple Names on Cover */
+.couple-names {
+    margin: var(--space-lg) 0;
+}
+
+.groom-name,
+.bride-name {
+    font-family: var(--font-tamil);
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--gold-shimmer);
+    letter-spacing: 3px;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    line-height: 1.4;
+}
+
+.ampersand {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--gold-light);
+    margin: var(--space-xs) 0;
+    opacity: 0.8;
+    font-style: italic;
+}
+
+/* Invitation Text */
+.invitation-text {
+    font-size: 1.1rem;
+    color: var(--cream-dark);
+    margin-bottom: var(--space-xl);
+    letter-spacing: 1px;
+    opacity: 0.9;
+}
+
+/* Open Invitation Button */
+.open-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 14px 32px;
+    background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-light) 100%);
+    color: var(--maroon-deep);
+    font-family: var(--font-tamil);
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    letter-spacing: 1px;
+    box-shadow: 
+        0 4px 20px rgba(197, 149, 43, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+.open-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 6px 30px rgba(197, 149, 43, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.open-btn:active {
+    transform: translateY(0);
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 4px 20px rgba(197, 149, 43, 0.4); }
+    50% { box-shadow: 0 4px 30px rgba(197, 149, 43, 0.7); }
+}
+
+.btn-icon {
+    font-size: 1.3rem;
+}
+
+/* Cover Bottom Border */
+.cover-bottom-border {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--gold);
+    opacity: 0.3;
+    font-size: 0.8rem;
+    letter-spacing: 8px;
+    z-index: 5;
+}
+
+
+/* ============================================
+   MAIN INVITATION CONTENT
+   ============================================ */
+.invitation-content {
+    display: none; /* Hidden until cover is opened */
+    min-height: 100vh;
+    background: 
+        linear-gradient(180deg, 
+            var(--cream) 0%, 
+            var(--cream-dark) 30%, 
+            var(--cream) 60%, 
+            var(--cream-dark) 100%
+        );
+    padding-bottom: var(--space-xl);
+}
+
+.invitation-content.visible {
+    display: block;
+}
+
+/* Section Header */
+.section-header {
+    text-align: center;
+    padding: var(--space-2xl) var(--space-md) var(--space-lg);
+}
+
+/* ---- Fade In Animation ---- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ============================================
+   INVITATION IMAGE SECTION
+   ============================================ */
+.invitation-image-section {
+    padding: 0 var(--space-md) var(--space-xl);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Decorative Frame around image */
+.image-frame {
+    position: relative;
+    padding: 8px;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold-light), var(--gold-dark));
+    border-radius: 8px;
+    box-shadow: 
+        0 8px 30px rgba(42, 21, 6, 0.2),
+        0 2px 8px rgba(42, 21, 6, 0.1);
+}
+
+/* Frame corner decorations */
+.frame-corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    z-index: 2;
+}
+
+.frame-corner::before,
+.frame-corner::after {
+    content: '';
+    position: absolute;
+    background: var(--gold-shimmer);
+}
+
+.frame-corner::before {
+    width: 20px;
+    height: 3px;
+}
+
+.frame-corner::after {
+    width: 3px;
+    height: 20px;
+}
+
+.fc-tl { top: -2px; left: -2px; }
+.fc-tr { top: -2px; right: -2px; }
+.fc-tr::before { right: 0; }
+.fc-tr::after { right: 0; }
+.fc-bl { bottom: -2px; left: -2px; }
+.fc-bl::before { bottom: 0; }
+.fc-bl::after { bottom: 0; }
+.fc-br { bottom: -2px; right: -2px; }
+.fc-br::before { right: 0; bottom: 0; }
+.fc-br::after { right: 0; bottom: 0; }
+
+.invitation-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    background-color: var(--white);
+}
+
+
+/* ============================================
+   WEDDING DETAILS SECTION
+   ============================================ */
+.wedding-details {
+    padding: var(--space-lg) var(--space-md);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.details-card {
+    background: linear-gradient(160deg, var(--maroon-deep) 0%, var(--maroon) 100%);
+    border-radius: 16px;
+    padding: var(--space-xl) var(--space-lg);
+    text-align: center;
+    border: 1px solid rgba(197, 149, 43, 0.3);
+    box-shadow: 
+        0 8px 30px rgba(42, 21, 6, 0.25),
+        inset 0 1px 0 rgba(197, 149, 43, 0.1);
+}
+
+.details-title {
+    font-family: var(--font-tamil);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: var(--space-sm);
+}
+
+.event-block {
+    margin: var(--space-lg) 0;
+}
+
+.event-title {
+    font-size: 1.2rem;
+    color: var(--gold-shimmer);
+    margin-bottom: var(--space-sm);
+    font-weight: 700;
+}
+
+.event-date {
+    font-size: 1.1rem;
+    color: var(--cream);
+    margin-bottom: var(--space-xs);
+}
+
+.event-time {
+    font-size: 1rem;
+    color: var(--cream-dark);
+    opacity: 0.9;
+}
+
+.event-divider {
+    color: var(--gold);
+    font-size: 1.2rem;
+    opacity: 0.4;
+    margin: var(--space-sm) 0;
+}
+
+/* Details card inner gold divider */
+.details-card .gold-divider {
+    color: var(--gold-light);
+}
+
+
+/* ============================================
+   LOCATION SECTION
+   ============================================ */
+.location-section {
+    padding: var(--space-lg) var(--space-md);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.location-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: var(--space-xl) var(--space-lg);
+    text-align: center;
+    border: 1px solid rgba(197, 149, 43, 0.25);
+    box-shadow: 0 4px 20px rgba(42, 21, 6, 0.1);
+}
+
+.location-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-sm);
+}
+
+.location-title {
+    font-family: var(--font-tamil);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--maroon);
+    margin-bottom: var(--space-sm);
+}
+
+.venue-name-tamil {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: var(--space-xs);
+    line-height: 1.5;
+}
+
+.venue-location-tamil {
+    font-size: 1.05rem;
+    color: var(--brown);
+    margin-bottom: var(--space-md);
+}
+
+.venue-english {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    color: var(--brown);
+    opacity: 0.7;
+    margin-bottom: var(--space-xl);
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+}
+
+/* Google Maps Button */
+.maps-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    width: 100%;
+    max-width: 340px;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-light) 100%);
+    color: var(--gold-shimmer);
+    font-family: var(--font-tamil);
+    font-size: 1.05rem;
+    font-weight: 700;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 16px rgba(92, 26, 26, 0.3);
+    transition: all 0.3s ease;
+}
+
+.maps-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(92, 26, 26, 0.4);
+    background: linear-gradient(135deg, var(--maroon-light) 0%, var(--red-vermillion) 100%);
+}
+
+.maps-btn:active {
+    transform: translateY(0);
+}
+
+
+/* ============================================
+   WHATSAPP SHARE SECTION
+   ============================================ */
+.share-section {
+    padding: var(--space-lg) var(--space-md);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.share-card {
+    background: linear-gradient(160deg, #1B5E20 0%, #2E7D32 100%);
+    border-radius: 16px;
+    padding: var(--space-xl) var(--space-lg);
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(27, 94, 32, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.share-title {
+    font-family: var(--font-tamil);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: var(--space-sm);
+}
+
+.share-card .gold-divider {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.share-description {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: var(--space-xl);
+    line-height: 1.5;
+}
+
+/* WhatsApp Button */
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    width: 100%;
+    max-width: 340px;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, #43A047 0%, #66BB6A 100%);
+    color: var(--white);
+    font-family: var(--font-tamil);
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+    box-shadow: 
+        0 4px 16px rgba(67, 160, 71, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(67, 160, 71, 0.5);
+}
+
+.whatsapp-btn:active {
+    transform: translateY(0);
+}
+
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+    text-align: center;
+    padding: var(--space-2xl) var(--space-md) var(--space-xl);
+}
+
+.footer-ornament {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    color: var(--gold);
+    opacity: 0.5;
+    font-size: 0.9rem;
+    margin-bottom: var(--space-md);
+}
+
+.footer-text {
+    font-size: 1rem;
+    color: var(--brown);
+    margin-bottom: var(--space-xs);
+    opacity: 0.8;
+}
+
+.footer-names {
+    font-family: var(--font-tamil);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--maroon);
+    margin-bottom: var(--space-lg);
+}
+
+.footer .footer-ornament:last-child {
+    margin-top: var(--space-md);
+    margin-bottom: 0;
+}
+
+
+/* ============================================
+   MEDIA QUERIES - Responsive Design
+   ============================================ */
+
+/* Small phones */
+@media (max-width: 360px) {
+    .cover-title {
+        font-size: 1.25rem;
+    }
+
+    .groom-name,
+    .bride-name {
+        font-size: 1.65rem;
+    }
+
+    .open-btn {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+
+    .lamp { display: none; }
+}
+
+/* Standard mobile */
+@media (min-width: 361px) and (max-width: 480px) {
+    .groom-name,
+    .bride-name {
+        font-size: 1.9rem;
+    }
+}
+
+/* Tablets */
+@media (min-width: 768px) {
+    .cover-title {
+        font-size: 1.8rem;
+    }
+
+    .groom-name,
+    .bride-name {
+        font-size: 2.5rem;
+    }
+
+    .ampersand {
+        font-size: 2.2rem;
+    }
+
+    .open-btn {
+        padding: 16px 40px;
+        font-size: 1.2rem;
+    }
+
+    .invitation-image-section {
+        padding: 0 var(--space-xl) var(--space-2xl);
+    }
+
+    .lamp {
+        font-size: 2.5rem;
+    }
+
+    .lamp-icon {
+        font-size: 3rem;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .front-cover::after {
+        top: 16px;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        border-width: 2px;
+    }
+
+    .corner-ornament {
+        width: 100px;
+        height: 100px;
+    }
+
+    .top-left::before, .bottom-right::before,
+    .top-right::before, .bottom-left::before {
+        width: 70px;
+    }
+
+    .top-left::after, .bottom-right::after,
+    .top-right::after, .bottom-left::after {
+        height: 70px;
+    }
+
+    .cover-content {
+        max-width: 500px;
+    }
+
+    .cover-title {
+        font-size: 2rem;
+    }
+
+    .groom-name,
+    .bride-name {
+        font-size: 2.8rem;
+    }
+
+    .invitation-image-section,
+    .wedding-details,
+    .location-section,
+    .share-section {
+        max-width: 650px;
+    }
+}
+
+/* Landscape phones - ensure content fits */
+@media (max-height: 500px) and (orientation: landscape) {
+    .cover-content {
+        padding: var(--space-sm);
+    }
+
+    .ganesha-symbol {
+        margin-bottom: var(--space-xs);
+    }
+
+    .om-symbol {
+        font-size: 2rem;
+    }
+
+    .cover-title {
+        font-size: 1.2rem;
+    }
+
+    .groom-name,
+    .bride-name {
+        font-size: 1.4rem;
+    }
+
+    .couple-names {
+        margin: var(--space-sm) 0;
+    }
+
+    .gold-divider {
+        margin: var(--space-xs) 0;
+    }
+
+    .invitation-text {
+        margin-bottom: var(--space-sm);
+        font-size: 0.9rem;
+    }
+
+    .open-btn {
+        padding: 10px 24px;
+        font-size: 0.95rem;
+    }
+
+    .lamp { display: none; }
+    .cover-bottom-border { display: none; }
+}
+
+/* Print styles */
+@media print {
+    .front-cover { display: none; }
+    .invitation-content { display: block !important; }
+    .open-btn,
+    .maps-btn,
+    .whatsapp-btn { display: none; }
+}
+
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .fade-in {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Focus styles */
+.open-btn:focus-visible,
+.maps-btn:focus-visible,
+.whatsapp-btn:focus-visible {
+    outline: 3px solid var(--gold-shimmer);
+    outline-offset: 3px;
+}
